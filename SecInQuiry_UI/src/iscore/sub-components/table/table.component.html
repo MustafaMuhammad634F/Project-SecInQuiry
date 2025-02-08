@@ -1,0 +1,149 @@
+
+
+
+<div style="height: 100%;">
+
+    <div id="refresh-button">
+        <button mat-raised-button style="padding: 10px; background-position: center; width: 50px; align-self: center;">
+            <img src="/assets/refresh-circle.png" style="display: grid; align-items: center;">
+        </button>
+    </div>
+
+    <div #httpConnError class="error-msg" dir="rtl" style="display: none;">
+        <div class="oaerror danger">
+            <strong>خطأ في الإتصال!</strong> واجهت مشكلة في الإتصال بخوادم قواعد البيانات, يرجى التواصل مع الفريق المختص
+        </div>
+    </div>
+    
+    <div class="iscore-table-container" dir="rtl">
+
+        <div class="table-header">
+            <div class="view-options">
+                <label for="rows-select">عدد الصفوف: </label>
+                <select id="rows-select" #numRows>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+        </div>
+
+        <table id="iscore-table">
+            <thead>
+                  <tr>
+                        <th data-column="id">
+                            
+                            رقم
+
+                        </th>
+
+                        <th data-column="plateNum">
+                            
+                            رقم اللوحة 
+
+                        </th>
+
+                        <th data-column="person">
+                            
+                             صاحب المركبة
+                    
+                        </th>
+
+                        <th data-column="entityName">
+                            
+                            إسم المنشأة
+                    
+                        </th>
+
+                        <th data-column="finEntName">
+                            
+                            الهيئة الممولة
+                              
+                        </th>
+
+                        <th data-column="matching">
+                            
+                            المطابقة
+                            
+                        </th>
+
+                  </tr>
+            </thead>
+            
+            <tbody #tableBody id="table-body">
+                <!--•    ­°Add expandable (class) to the required element...     -->
+                @for(data of matchingDataProb; track data.id)
+                {
+                    <tr #mainTableRow>
+                        <td>{{data.id}}</td>
+                        <td>{{data.plateNum}}</td>
+                        <td>{{data.person_Full_Name}}</td>
+                        <td>{{data.entity_Full_Name}}</td>
+                        <td>{{data.financial_Entity_Name}}</td>
+                        <td #matchProb id="expandUnmatch"> {{determineMatchedVehicleData(data.vehicle_Matching_Result, data.id)}} </td>
+                    </tr>
+                }
+            </tbody>
+
+      </table>
+      
+        <!--<div #pagination class="pagination">
+            <button class="transition-button" (click)="transitionBackToPage()"><img src="/assets/arrow_right.png"/></button>
+            <button #pgntionBtns class="pagination-buttons" *ngFor="let page of pages" (click)="__transitionToSpecificPage(page)">{{page}}</button>
+            <button class="transition-button" (click)="transitionForwardToPage()"><img src="/assets/arrow_left.png"/></button>                    
+        </div>-->
+
+    </div>
+
+</div>
+
+
+
+<!--Expandable Element  •(Start)• -->
+
+<!--<tr style="display: none; font-size: 13px;">
+    <td colspan="5"> 
+        <div style="display: flex; justify-content: center;">
+            <table style="width: 60%; align-self: center;">
+                <thead>
+                    <tr>
+                        <th>
+
+                        </th>
+
+                        <th style="background-color: rgb(179, 173, 172); color: #fff;">
+                            رقم الشاسيه
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            آي سكـــور
+                        </td>
+                        <td style="background-color: #ffc7ce; color: #9c004e;">
+                            XHRsaf5546786
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            المـــــرور
+                        </td>
+                        <td style="background-color: #ffc7ce; color: #9c004e;">
+                            XHRsaf5546786
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </td>
+</tr>-->
+
+<!--Expandable Element •(End)• -->
+
+<!--<tr style="display: none; text-align:center">
+    <td colspan="5">
+        <h4  #noResult id="result">لا توجد نتائج</h4>
+    </td>
+</tr>-->
+

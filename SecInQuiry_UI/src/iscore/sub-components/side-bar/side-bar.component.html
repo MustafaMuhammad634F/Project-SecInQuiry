@@ -1,0 +1,38 @@
+
+
+<div #iscoreContainer id="iscr-inpt-container" dir="rtl">
+
+    <label for="pltNum">رقم اللوحة</label>
+    <div #vclDivNW class="sideBar-inpts vclNum-inpt-nw">
+
+            <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="1" style="width: 7%;">
+            <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="1" style="width: 7%;">
+            <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="1" style="width: 7%;">
+            <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="4" style="width: 30%;">
+
+    </div>
+
+    <br style="margin-bottom: 15px;">
+
+    <label for="chassis"> رقم الشاسيه </label>
+    <input #chassisNum class="sideBar-inpts" type="text" id="chassis">
+
+    <br style="margin-bottom: 15px;">
+
+    <label for="engNum"> رقم الموتور </label>
+    <input #engNum class="sideBar-inpts" type="text" id="engNum">
+
+    <br style="margin-bottom: 15px;">
+
+    <label for="reqNum"> رقم الخطاب </label>
+    <input #reqNum class="sideBar-inpts" type="text" id="reqNum">
+
+    <br style="margin-bottom: 50px;">
+
+    <button mat-raised-button 
+                style="width: 75%; align-self: center; background-color: rgb(55, 136, 48); color: #fff;" 
+                (click)="transmitIscore_Data_to_API()"> 
+                <strong> بحـــــث </strong> 
+    </button>
+
+</div>
