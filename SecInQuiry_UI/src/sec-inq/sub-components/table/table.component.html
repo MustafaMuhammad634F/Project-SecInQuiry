@@ -1,0 +1,130 @@
+
+
+<div style="height: 100%;">
+    <div id="refresh-button" #refreshButtonDiv>
+        <button mat-raised-button style="padding: 10px; background-position: center; align-self: center;" #refreshButton id="ref-button">
+            <img src="assets/refresh-circle.png" style="display: grid; align-items: center;">
+        </button>
+        
+    </div>
+
+    <div #httpConnError class="error-msg" dir="rtl" style="display: none;">
+        <div class="oaerror danger">
+            <strong>خطأ في الإتصال!</strong> واجهت مشكلة في الإتصال بخوادم قواعد البيانات, يرجى التواصل مع الفريق المختص
+        </div>
+    </div>
+
+
+
+    <div class="secInq-table-container" dir="rtl">
+        <div class="table-header">
+            <div class="view-options">
+                <label for="rows-select">عدد الصفوف: </label>
+                <select id="rows-select" #numRows>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+        </div>
+
+        <table id="sec-inq-table">
+            
+            <thead>
+                  <tr>
+                        <th data-column="id" class="id-col">
+                            
+                            مسلسل
+
+                        </th>
+
+                        <th data-column="plateNum" class="plt-col">
+                            
+                            رقم اللوحة 
+
+                        </th>
+
+                        <th data-column="carOwner">
+                            
+                            إسم صاحب المركبة
+                    
+                        </th>
+
+                        <th data-column="IP">
+                            
+                            IP
+                              
+                        </th>
+
+                        <th data-column="Inquirer">
+                            
+                            إسم المُستعلم عن المركبة
+                            
+                        </th>
+
+                        <th data-column="trafUnit">
+                            
+                            وحدة المستعلم 
+                                
+                        </th>
+
+                        <th data-column="date" class="dt-col">
+                            
+                            التاريخ 
+                            
+                        </th>
+                  </tr>
+                  
+            </thead>
+            <thead>
+                
+                    <tr #dbLoading style="display: none;">
+                        <th class="loader-line"></th>
+                    </tr>
+               
+                
+            </thead>
+            <tbody #tableBody id="table-body">
+                
+                    @for(data of segmentedData; track data.id)
+                    {
+                        <tr>
+                            <td class="id-col">{{data.id}}</td>
+                            <td class="plt-col">{{data.plateNum}}</td>
+                            <td>{{data.ownerName}}</td>
+                            <td>{{data.ip}}</td>
+                            <td>{{data.inquirerName}}</td>
+                            <td>{{data.trfUnit}}</td>
+                            <td class="dt-col">{{returnFullDate(data.date_From)}}</td>
+                        </tr>
+                    }
+                    
+
+
+            </tbody>
+
+            <tbody style="display: none;"  #noResult id="noResult">
+                <tr>
+                    <td colspan="7">
+                        <img src="assets/blocked-website.png">
+                        <h3 id="result">لا توجــــد نتائـــج</h3>
+                    </td>
+                </tr>
+            </tbody>
+            <!---->
+      </table>
+
+      <!--<div class="loading-state">
+        <div class="loading" colspan="7"></div>
+        </div>-->
+
+        <div #pagination class="pagination" style="display: none;">
+            <button class="transition-button" (click)="transitionBackToPage()"><img src="assets/arrow_right.png"/></button>
+            <button #pgntionBtns class="pagination-buttons" *ngFor="let page of pages" (click)="__transitionToSpecificPage(page, $event)">{{page}}</button>
+            <button class="transition-button" (click)="transitionForwardToPage()"><img src="assets/arrow_left.png"/></button>                    
+        </div>
+
+
+
+    </div>
+</div>

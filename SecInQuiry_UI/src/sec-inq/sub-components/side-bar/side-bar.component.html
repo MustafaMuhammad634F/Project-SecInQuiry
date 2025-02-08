@@ -1,0 +1,126 @@
+
+<div #secInqContainer id="sec-inpt-container" dir="rtl">
+
+    <!-------------------------------------------------------------------------------------------------------------------------->
+        <!-----------------Vehile Number Input----------------->
+            <label for="pltNum">رقم اللوحة</label>
+            <div #vclDivNW class="sideBar-inpts vclNum-inpt-nw">
+    
+                    <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="1" style="width: 7%;">
+                    <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="1" style="width: 7%;">
+                    <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="1" style="width: 7%;">
+                    <input #nwPltInpt class="pltChr-inpt" type="text" id="pltNum" maxlength="4" style="width: 30%;">
+    
+                <button type="submit" #nwPltBtn class="new-plt-btn" style="border:none; background: none; cursor: pointer;">
+                    <img src="assets/numbers.png" alt="رقم لوحة قديم"/>
+                </button>
+    
+            </div>
+    
+            <div style="display: none;" #vclDivOLD class="sideBar-inpts vclNum-inpt-old">
+    
+                <input #oldPltInpt class="pltNum-inpt" type="text" id="pltNum" maxlength="10">
+    
+                  <button #oldPltBtn class="old-plt-btn" style="border:none; background: none; cursor: pointer;">
+                    <img src="assets/abc2.png" alt="رقم لوحة جديد">
+                  </button>
+            </div>
+    
+            <br style="margin-bottom: 15px;">
+    <!-------------------------------------------------------------------------------------------------------------------------->
+            <!----------------Other inputs------------------>
+            
+            <label for="crOwn">إسم صاحب المركبة</label>
+            <input #crOwn class="sideBar-inpts" type="text" id="crOwn">
+    
+            <br style="margin-bottom: 15px;">
+    
+            <label for="ipAdd">عنوان الـ IP</label>
+            <input #ipAddr class="sideBar-inpts" type="text" id="ipAdd" style="text-align: left;" dir="ltr">
+    
+            <br style="margin-bottom: 15px;">
+    
+            <label for="inqr">المُستعلم عن المركبة</label>
+            <input #inqr class="sideBar-inpts" type="text" id="inqr" >
+    
+            <br style="margin-bottom: 35px;">
+    <!-------------------------------------------------------------------------------------------------------------------------->
+            <!----------------Traffic Units & Gov------------------>
+    
+            <div class="gov-trfUnt-select">
+    
+                <mat-form-field class="gov-select" appearance="outline" style="margin-left: 15px;">
+                  <mat-label>محافظة المستعلم</mat-label>
+                  <input #govInpt  type="text"
+                        placeholder="إختر محافظة من القائمة"
+                        aria-label="governorate"
+                        matInput
+                        [formControl]="govSelectedControl"
+                        [matAutocomplete]="auto1"
+                        (click)="onGovInputClicked()">
+    
+                  <mat-autocomplete #auto1="matAutocomplete">
+                    @for (option of govFilteredOptions | async; track option) 
+                      {
+                        <mat-option [value]="option">{{option}}</mat-option>
+                      }
+                  </mat-autocomplete>
+                </mat-form-field>
+    
+    
+                <mat-form-field class="trfUnt-select" appearance="outline">
+                    <mat-label>وحدة المرور</mat-label>
+                    <input #trfInpt type="text"
+                            placeholder="إختر وحدة المرور"
+                            aria-label="TrafficUnit"
+                            matInput
+                            [formControl]="trfUntSelectControl"
+                            [matAutocomplete]="auto2">
+                    <mat-autocomplete #auto2="matAutocomplete">
+                        @for (option of trfUntFilteredOptions | async; track option) 
+                            {
+                                <mat-option  [value]="option">{{option}}</mat-option>
+                            }
+                    </mat-autocomplete>
+                </mat-form-field>
+    
+            </div>
+    
+            <br style="margin-bottom: 15px;">
+    <!-------------------------------------------------------------------------------------------------------------------------->
+            <!-----------------Date----------------->
+            <div style="display: flex; flex-direction: row;  margin-top: 15px;">
+                <mat-form-field style="width:92%;" appearance="outline" [formGroup]="dateRangeForm">
+                    <mat-label style="font-size: 14px;">إختر نطاق معين من التاريخ</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate #strtDt placeholder="بدءاً من" formControlName="startDate">
+                            <input matEndDate #endDt placeholder="إلى" formControlName="endDate">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker">
+                        </mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+                <div style="margin-right: 10px; margin-top: 7px;">
+                    <button mat-mini-fab  style="background-color: #DC143C;" (click)="resetDate()">
+                        <!--<mat-icon>menu</mat-icon>-->
+                        <img src="assets/reloadDate_.png" style="display: grid; align-items: center;">
+                    </button>
+                  </div>
+            </div>
+    <!--  <button type="submit" (keyup.enter)="search(...)">Search</button>  -->
+    <br style="margin-bottom: 50px;">
+
+    <button mat-raised-button 
+                    style="width: 75%; align-self: center; background-color: crimson; color: #fff;"
+                    (click)="transmitSecInQ_Data_to_secInQTableComp()"> 
+                    <strong> بحـــــث </strong>
+                    
+    </button>
+
+
+    <div class="flashing-point" #appStatus>
+       
+    </div>
+
+</div>
+    

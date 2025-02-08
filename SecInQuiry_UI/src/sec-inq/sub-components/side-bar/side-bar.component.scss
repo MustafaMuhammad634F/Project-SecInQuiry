@@ -1,0 +1,78 @@
+
+#sec-inpt-container
+{
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+}
+
+.sideBar-inpts[type=text]
+{
+    width:92%;
+    border:1px solid #74777f;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+}
+
+.sideBar-inpts:focus, .pltChr-inpt:focus, .pltNum-inpt:focus
+{
+  border-color:rgb(133, 204, 126);
+  box-shadow:0 0 8px 0 rgb(133, 204, 126);
+}
+
+
+.vclNum-inpt-nw
+{
+  display: flex; 
+  flex-direction: row;
+}
+
+.pltNum-inpt
+{
+  width: 97%;
+}
+
+
+.pltChr-inpt, .pltNum-inpt
+{
+  border:1px solid #74777f;
+  border-radius:4px;
+  padding: 8px;
+  margin:8px 4px;
+  text-align: center;
+  transition:.3s;
+  outline:none;
+}
+
+
+.gov-trfUnt-select
+{
+  display: inline-flex;
+  width: 92%;
+}
+
+@keyframes flashing {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.flashing-point
+{
+  animation: flashing 4s infinite;
+  background-color: red;
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ display: inline-block; 
+}
