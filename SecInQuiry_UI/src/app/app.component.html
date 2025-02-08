@@ -1,0 +1,35 @@
+
+<div class="app-container" dir="rtl">
+
+  <div id="side-bar">
+      <mat-form-field style="width: 65%; margin: 10px;" appearance="outline" dir="rtl">
+        <mat-label> -نوع البحث-  </mat-label>
+            <mat-select #searchTypeOption>
+                <mat-option [value]="1">إســـــتعلام أمـــني </mat-option>
+                <mat-option [value]="2">مطابقة بيانات خطابات حظر (آي-سكور) مع المرور </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <div #secInQSideBar  style="display:none;">
+          <secInQ-side-bar>
+          </secInQ-side-bar>
+        </div>
+
+        <!--<div #iscoreSideBar  style="display:none;">
+          <iscore-side-bar>
+          </iscore-side-bar>
+        </div>-->
+  </div>
+
+
+  <div id="table-section">
+    <secInQ-table >
+
+    </secInQ-table>
+
+    <!--<iscore-table style="display: none;">
+      
+    </iscore-table>-->
+  </div>
+
+</div>
